@@ -1,0 +1,30 @@
+name: test ci/cd
+on:
+  push:
+    branches:
+      - "main"
+
+permissions:
+  packages: write
+
+jobs:
+    build_push:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repo
+          uses: actions/checkout@v4
+        - name: Log in to registry
+          uses: docker/login-action@v3
+          with:
+            registry: https://ghcr.io
+            username: ${{ github.actor }}
+            password: ${{ secrets.GH_TOKEN }}
+
+        - name: Build and push Docker image
+          uses: docker/build-push-action@v6
+          with:
+            context: .
+            push: true
+            tags: |
+              ghcr.io/PaterSSS/calculator:latest
+              ghcr.io/PaterSSS/calculator:${{ github.sha }}
