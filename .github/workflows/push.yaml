@@ -42,7 +42,7 @@ jobs:
         - name: Docker Stack Deploy
           uses: cssnr/stack-deploy-action@v1
           with:
-            name: game
+            name: teststack
             file: compose.yaml
             host: 176.98.178.227
             user: paradox
