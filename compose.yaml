@@ -1,7 +1,6 @@
 services:
   app:
     image: ghcr.io/patersss/neoflexvacationcalculator:${GIT_COMMIT_HASH}
-    restart: on-failure
     container_name: calculator
     ports:
       - target: 8080
