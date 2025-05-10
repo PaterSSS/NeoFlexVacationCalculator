@@ -54,4 +54,8 @@ public class VacationPayController {
     public ResponseEntity<String> addNewone() {
         return ResponseEntity.ok("Add new one\n");
     }
+    @GetMapping("/add3")
+    public ResponseEntity<String> add3() {
+        return ResponseEntity.ok("Add new 3\n");
+    }
 }
