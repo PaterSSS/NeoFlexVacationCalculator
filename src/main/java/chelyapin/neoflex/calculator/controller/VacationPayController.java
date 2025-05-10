@@ -32,7 +32,7 @@ public class VacationPayController {
 
             return ResponseEntity.badRequest().body("Validation failed: " + errorMessage);
         }
-
+        //please work
         BigDecimal vacationPay = vacationPayService.calculateVacationPay(
                 vacationPayRequest.getYearAverageSalary(),
                 vacationPayRequest.getTotalVacationDays(),
