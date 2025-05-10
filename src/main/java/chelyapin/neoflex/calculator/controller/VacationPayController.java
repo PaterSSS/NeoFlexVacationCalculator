@@ -20,6 +20,11 @@ public class VacationPayController {
         this.vacationPayService = vacationPayService;
     }
 
+    @GetMapping("/")
+    public ResponseEntity<String> index() {
+        return ResponseEntity.ok("Vacation Pay Service");
+    }
+
     @GetMapping("/calculate")
     public ResponseEntity<String> calculate(@Valid VacationPayRequest vacationPayRequest,
                                                 BindingResult bindingResult) {
