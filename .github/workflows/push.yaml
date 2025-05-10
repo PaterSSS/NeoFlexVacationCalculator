@@ -19,6 +19,9 @@ jobs:
             registry: https://ghcr.io
             username: ${{ github.actor }}
             password: ${{ secrets.GH_TOKEN }}
+        - name: Check gh hash before pushing to registry
+          run: |
+            echo ${{ github.sha }}
 
         - name: Build and push Docker image
           uses: docker/build-push-action@v6
@@ -26,7 +29,6 @@ jobs:
             context: .
             push: true
             tags: |
-              ghcr.io/patersss/neoflexvacationcalculator:latest
               ghcr.io/patersss/neoflexvacationcalculator:${{ github.sha }}
 
     deploy:
@@ -36,9 +38,16 @@ jobs:
       steps:
         - name: checkout code
           uses: actions/checkout@v4
+        - name: Check gh hash before setting envfile
+          run: |
+            echo ${{ github.sha }}
         - name: create env file
           run: |
             echo "GIT_COMMIT_HASH=${{ github.sha }}" >> ./envfile
+
+        - name: Check gh hash after pushing to registry
+          run: |
+            echo ${{ github.sha }}
         - name: Docker Stack Deploy
           uses: cssnr/stack-deploy-action@v1
           with:
@@ -48,3 +57,7 @@ jobs:
             user: paradox
             ssh_key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
             env_file: ./envfile
+            registry_auth: true
+            registry_host: "ghcr.io"
+            registry_user: ${{ github.actor }}
+            registry_pass: ${{ secrets.GH_TOKEN }}
