@@ -47,6 +47,10 @@ public class VacationPayController {
     }
     @GetMapping("/test2")
     public ResponseEntity<String> test2() {
+        return ResponseEntity.ok("please asdfas");
+    }
+    @GetMapping("/please")
+    public ResponseEntity<String> please() {
         return ResponseEntity.ok("please work");
     }
 }
