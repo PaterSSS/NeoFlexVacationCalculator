@@ -28,3 +28,22 @@ jobs:
             tags: |
               ghcr.io/patersss/neoflexvacationcalculator:latest
               ghcr.io/patersss/neoflexvacationcalculator:${{ github.sha }}
+#    deploy:
+#      runs-on: ubuntu-latest
+#      needs:
+#        - build_push
+#      steps:
+#        - name: checkout code
+#          uses: actions/checkout@v4
+#        - name: create env file
+#          run: |
+#            echo "GIT_COMMIT_HASH=${{ github.sha }}" >> ./envfile
+#        - name: Docker Stack Deploy
+#          uses: cssnr/stack-deploy-action@v1
+#          with:
+#            name: game
+#            file: compose.yaml
+#            host: 176.98.178.227
+#            user: paradox
+#            ssh_key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
+#            env_file: ./envfile

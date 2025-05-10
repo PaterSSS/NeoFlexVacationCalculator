@@ -1,0 +1,8 @@
+services:
+  app:
+    image: ghcr.io/patersss/neoflexvacationcalculator:latest
+    ports:
+      - "8081:8081"
+    restart: on-failure
+    container_name: calculator
+    

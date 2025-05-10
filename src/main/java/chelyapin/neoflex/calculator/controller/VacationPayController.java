@@ -45,4 +45,8 @@ public class VacationPayController {
     public ResponseEntity<String> test() {
         return ResponseEntity.ok().body("OK. It is new image pulled from registry");
     }
+    @GetMapping("/test2")
+    public ResponseEntity<String> test2() {
+        return ResponseEntity.ok("please work");
+    }
 }
