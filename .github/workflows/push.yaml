@@ -26,5 +26,5 @@ jobs:
             context: .
             push: true
             tags: |
-              ghcr.io/PaterSSS/neoflexvacationcalculator:latest
-              ghcr.io/PaterSSS/neoflexvacationcalculator:${{ github.sha }}
+              ghcr.io/patersss/neoflexvacationcalculator:latest
+              ghcr.io/patersss/neoflexvacationcalculator:${{ github.sha }}
