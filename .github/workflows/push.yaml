@@ -38,6 +38,11 @@ jobs:
       steps:
         - name: checkout code
           uses: actions/checkout@v4
+
+        - name:
+          run: |
+            echo ${{ github.actor }}
+
         - name: Check gh hash before setting envfile
           run: |
             echo ${{ github.sha }}
